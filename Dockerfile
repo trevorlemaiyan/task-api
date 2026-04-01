@@ -19,5 +19,8 @@ COPY . .
 # Install Laravel's PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+ENV APP_DEBUG=true
+ENV APP_URL="https://task-api-r629.onrender.com"
+
 # Start the built-in server on the port Render assigns
 CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
