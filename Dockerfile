@@ -23,4 +23,5 @@ ENV APP_DEBUG=true
 ENV APP_URL="https://task-api-r629.onrender.com"
 
 # Start the built-in server on the port Render assigns
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
+# This command runs migrations and then starts the server
+CMD php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
